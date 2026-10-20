@@ -17,3 +17,24 @@ Verification: A transient analysis was run in ADE L, with the inputs driven by V
 A few things I noticed in the report:
 The Boolean equations in the text appear to have lost their overbars during PDF conversion, so the NAND forms are hard to read exactly as written.
 The report doesn’t include quantitative metrics such as delay, power, or transistor sizing, so the validation is qualitative (waveform inspection only).
+
+
+
+###Project 2
+
+This project is a Smart Fan and Light Control System built on an ESP32. It switches a fan and a light automatically based on room conditions.
+
+What it does: Three sensors feed the ESP32, which decides whether to switch the fan and light:
+
+An ultrasonic sensor detects presence (a person closer than 100 cm).
+An LDR measures ambient light (a reading below 1000 counts as dark).
+A DHT11 measures temperature (above 25°C counts as hot).
+
+Control logic:
+Fan: ON only when a person is present and the temperature is above 25°C.
+Light: ON only when a person is present and the room is dark.
+Otherwise, both are OFF. A 2-channel relay module switches the AC appliances and isolates them from the ESP32.
+
+Hardware: ESP32, DHT11, LDR, ultrasonic sensor and a 2-channel relay module. The report explains why each was chosen: the ESP32 for built-in Wi-Fi and spare GPIOs, and the ultrasonic sensor because it works in the dark, unlike IR.
+
+Software: The code is split into small functions (readTemperature, getDistance, isPersonPresent, controlFan, controlLight and so on). The main loop reads all sensors, prints the values to the Serial Monitor, updates the relays and waits 2 seconds. Thresholds are set with #define, so they are easy to tune.
