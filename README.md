@@ -20,6 +20,7 @@ The report doesn’t include quantitative metrics such as delay, power, or trans
 
 
 
+
 ###Project 2
 
 This project is a Smart Fan and Light Control System built on an ESP32. It switches a fan and a light automatically based on room conditions.
