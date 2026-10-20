@@ -4,11 +4,6 @@ This project is a 4-bit priority encoder designed and simulated in Cadence Virtu
 
 What it does: The encoder takes four inputs (I0 to I3) and produces a 2-bit binary code (Y1, Y0) for the highest-priority active input, where I3 has the highest priority. A valid bit (V) goes high when any input is active.
 
-Logic equations:
-Y1 = I2 + I3
-Y0 = I1·I2' + I3
-V = I0 + I1 + I2 + I3
-
 Implementation approach:
 A transistor-level NAND2 gate was built from two parallel PMOS and two series NMOS transistors.
 A NAND4 gate was built from four parallel PMOS and four series NMOS transistors.
